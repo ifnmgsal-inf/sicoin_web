@@ -1,5 +1,5 @@
 <?php
-    require "usuario_select.php";
+    require "setor_select.php";
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Usuário</title>
+    <title>Setor</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,52 +34,42 @@
         </div>
     </nav>
 
-    <h1 class="container-fluid interno">Usuário</h1>
+    <h1 class="container-fluid interno">Setor</h1>
 
-    <form action="usuario_insert.php" method="post">
+    <form action="setor_insert.php" method="post">
         <div class="container-fluid">
             <div class="interno">
 
                 <div class="form-row">
                     <div class="col-sm-6 my-1">
-                        <label>Nome:</label>
-                        <input type="text" id="nome" name="nome" class="form-control">
+                        <label>Setor:</label>
+                        <input type="text" id="setor" name="setor" class="form-control">
                     </div>
 
                     <div class="col-sm-6 my-1">
-                        <label>Endereço:</label>
-                        <input type="text" id="endereco" name="endereco" class="form-control">
+                        <label>Responsável:</label>
+                        <input type="text" id="responsavel" name="responsavel" class="form-control">
                     </div>
-                </div>
 
-                <div class="form-row">
 
-                    <div class="col-sm-6 my-1">
-                        <label>Telefone:</label>
-                        <input type="text" id="telefone" name="telefone" class="form-control">
-                    </div>
 
                     <div class="col-sm-6 my-1">
                         <label>Tipo:</label>
                         <select name="tipo" id="tipo" class="form-control">
-                            <option value="padrao">Padrão</option>
-                            <option value="administrador">Administrador</option>
+                            <option value="entrada">Entrada</option>
+                            <option value="saida">Saída</option>
+                            <option value="saida">Entrada/Saida</option>
                         </select>
                     </div>
-                </div>
 
-                <div class="form-row">
                     <div class="col-sm-6 my-1">
-                        <label>Usuário:</label>
-                        <input type="text" id="usuario" name="usuario" class="form-control">
-                    </div>
-                    <div class="col-sm-6 my-1">
-                        <label>senha:</label>
-                        <input type="password" id="senha" name="senha" class="form-control">
+                        <label>CNPJ:</label>
+                        <input type="text" id="cnpj" name="cnpj" class="form-control">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success btn-lg float-right">Cadastrar</button>
             </div>
+        </div>
         </div>
     </form>
 
@@ -93,11 +83,10 @@
 
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Endereço</th>
-                        <th>Telefone</th>
-                        <th>Usuário</th>
+                        <th>Setor</th>
+                        <th>Responsável</th>
                         <th>Tipo</th>
+                        <th>CNPJ</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
@@ -109,17 +98,22 @@
                 ?>
 
                     <tr>
-                        <td><?php echo $row['nome'];?></td>
-                        <td><?php echo $row['endereco'];?></td>
-                        <td><?php echo $row['telefone'];?></td>
-                        <td><?php echo $row['usuario'];?></td>
+                        <td><?php echo $row['setor'];?></td>
+                        <td><?php echo $row['responsavel'];?></td>
                         <td><?php echo $row['tipo'];?></td>
-                        <td><a class="btn btn-sm" data-toggle="modal" data-target="#modalUsuario"
-                                data-nome="<?php echo $row['nome'];?>" data-endereco="<?php echo $row['endereco'];?>"
-                                data-telefone="<?php echo $row['telefone'];?>"
-                                data-usuario="<?php echo $row['usuario'];?>" data-tipo="<?php echo $row['tipo'];?>"><i
-                                    class="material-icons">create</i></a></td>
-                        <td><a href="usuario_delete.php?nome=<?php echo $row['nome'];?>" class="btn btn-sm"
+                        <td><?php echo $row['cnpj'];?></td>
+
+                        <td>
+                            <a class="btn btn-sm" data-toggle="modal" data-target="#modalSetor"
+                                data-setor="<?php echo $row['setor'];?>"
+                                data-responsavel="<?php echo $row['responsavel'];?>"
+                                data-tipo="<?php echo $row['tipo'];?>" data-cnpj="<?php echo $row['cnpj'];?>">
+                                <i class="material-icons">create</i>
+                            </a>
+                        </td>
+
+
+                        <td><a href="setor_delete.php?setor=<?php echo $row['setor'];?>" class="btn btn-sm"
                                 data-confirmar="Tem certeza que deseja excluir o item selecionado ?">
                                 <i class="material-icons">delete</i></button></a></td>
                     </tr>
@@ -135,48 +129,44 @@
 
 
 
-    <div id="modalUsuario" class="modal fade bd-example-modal-lg" role="dialog">
+    <div id="modalSetor" class="modal fade bd-example-modal-lg" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Editar usuário</h4>
+                    <h4 class="modal-title">Editar setor</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form action="usuario_atualizar.php" method="post">
+                    <form action="setor_atualizar.php" method="post">
                         <div class="container-fluid">
                             <div class="form-row">
                                 <div class="col-sm my-1">
-                                    <label>Nome:</label>
-                                    <input type="text" id="nome" name="nome" class="form-control" readonly>
+                                    <label>Setor:</label>
+                                    <input type="text" id="setor" name="setor" class="form-control" readonly>
                                 </div>
 
                                 <div class="col-sm my-1">
-                                    <label>Endereço:</label>
-                                    <input type="text" id="endereco" name="endereco" class="form-control">
+                                    <label>Responsável:</label>
+                                    <input type="text" id="responsavel" name="responsavel" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-row">
 
                                 <div class="col-sm my-1">
-                                    <label>Telefone:</label>
-                                    <input type="text" id="telefone" name="telefone" class="form-control">
-                                </div>
-
-                                <div class="col-sm my-1">
                                     <label>Tipo:</label>
                                     <select name="tipo" id="tipo" class="form-control">
-                                        <option value="padrao">Padrão</option>
-                                        <option value="administrador">Administrador</option>
+                                        <option value="entrada">Entrada</option>
+                                        <option value="saida">Saída</option>
+                                        <option value="entrda/saida/Saida">Entrada/Saída</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col-sm my-1">
-                                    <label>Usuário:</label>
-                                    <input type="text" id="usuario" name="usuario" class="form-control">
+                                    <label>CNPJ:</label>
+                                    <input type="text" id="cnpj" name="cnpj" class="form-control">
                                 </div>
                             </div>
                             <button id="editar" type="submit" class="btn btn-success float-right">Atualizar</button>

@@ -1,4 +1,4 @@
-$('#meuModal').on('show.bs.modal', function (event) {
+$('#modalUsuario').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
     var nome = button.data('nome')
     var endereco = button.data('endereco')
@@ -14,6 +14,24 @@ $('#meuModal').on('show.bs.modal', function (event) {
     modal.find('#usuario').val(usuario)
     modal.find('#tipo').val(tipo)
 })
+
+
+$('#modalSetor').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var setor = button.data('setor')
+    var responsavel = button.data('responsavel')
+    var tipo = button.data('tipo')
+    var cnpj = button.data('cnpj')
+    var modal = $(this)
+
+    modal.find('.modal-title').text('Editar setor ' + setor)
+    modal.find('#setor').val(setor)
+    modal.find('#responsavel').val(responsavel)
+    modal.find('#tipo').val(tipo)
+    modal.find('#cnpj').val(cnpj)
+})
+
+
 
 $('a[data-confirmar]').click(function (ev) {
     var href = $(this).attr('href')
