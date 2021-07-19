@@ -1,0 +1,27 @@
+body{
+    color: rgb(57, 33, 89);
+}
+
+#navbar{
+    background-color: rgb(57, 33, 89);
+    height: 80px;
+    font-size: large;
+}
+#item{
+    color: #fafafa;
+}
+.tabela {
+    margin-top: 7%;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+.interno{
+    padding-right: 5%;
+    padding-left: 5%;
+}
+#minha_tabela{
+    color: rgb(57, 33, 89);
+}
+#editar{
+    margin-top: 10px;
+}
