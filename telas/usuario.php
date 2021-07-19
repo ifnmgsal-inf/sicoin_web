@@ -161,7 +161,8 @@
 
                                 <div class="col-sm my-1">
                                     <label>Telefone:</label>
-                                    <input type="text" id="telefone" name="telefone" class="form-control">
+                                    <input type="text" id="telefone" name="telefone" class="form-control"
+                                        pattern="[0-9]+([.][0-9]+)?" min="0" step="any">
                                 </div>
 
                                 <div class="col-sm my-1">

@@ -64,7 +64,8 @@
 
                     <div class="col-sm-6 my-1">
                         <label>CNPJ:</label>
-                        <input type="text" id="cnpj" name="cnpj" class="form-control">
+                        <input type="text" id="cnpj" name="cnpj" class="form-control" pattern="[0-9]+([.][0-9]+)?"
+                            min="0" step="any">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success btn-lg float-right">Cadastrar</button>

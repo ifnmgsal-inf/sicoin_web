@@ -48,7 +48,8 @@
 
                     <div class="col-sm-6 my-1">
                         <label>Estoque:</label>
-                        <input type="text" id="estoque" name="estoque" class="form-control">
+                        <input type="number" id="estoque" name="estoque" class="form-control"
+                            pattern="[0-9]+([.][0-9]+)?" min="0" step="any">
                     </div>
 
 
