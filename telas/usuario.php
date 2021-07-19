@@ -24,12 +24,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="nav navbar-nav ml-auto">
-                <a id="item" class="nav-item nav-link active" href="usuario.html">Usuário
-                    <a id="item" class="nav-item nav-link" href="setor.html">Setor</a>
-                    <a id="item" class="nav-item nav-link" href="produto.html">Produto</a>
-                    <a id="item" class="nav-item nav-link" href="entrada.html">Nota de entrada</a>
-                    <a id="item" class="nav-item nav-link" href="saida.html">Nota de saída</a>
-                    <a id="item" class="nav-item nav-link" href="saida.html">Relatórios</a>
+                <a id="item" class="nav-item nav-link active" href="usuario.php">Usuário
+                    <a id="item" class="nav-item nav-link" href="setor.php">Setor</a>
+                    <a id="item" class="nav-item nav-link" href="produto.php">Produto</a>
+                    <a id="item" class="nav-item nav-link" href="entrada.php">Nota de entrada</a>
+                    <a id="item" class="nav-item nav-link" href="saida.php">Nota de saída</a>
+                    <a id="item" class="nav-item nav-link" href="relatorio.php">Relatórios</a>
             </div>
         </div>
     </nav>
