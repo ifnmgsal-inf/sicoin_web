@@ -1,0 +1,15 @@
+<table id="test">
+    <tr>
+      <td>row1 column1</td>
+      <td>row1 column2</td>
+    </tr>
+  </table>
+  
+  <script>
+  function addrow(){
+   var table = document.getElementById("test");
+   var row = table.insertRow(0);
+    //this adds row in 0 index i.e. first place
+   row.innerHTML = "<td>row0 column1</td><td>row0 column2</td>";
+  }
+  </script>

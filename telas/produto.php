@@ -43,13 +43,13 @@
                 <div class="form-row">
                     <div class="col-sm-6 my-1">
                         <label>Descrição:</label>
-                        <input type="text" id="descricao" name="descricao" class="form-control">
+                        <input type="text" id="descricao" name="descricao" class="form-control" required>
                     </div>
 
                     <div class="col-sm-6 my-1">
                         <label>Estoque:</label>
                         <input type="number" id="estoque" name="estoque" class="form-control"
-                            pattern="[0-9]+([.][0-9]+)?" min="0" step="any">
+                            pattern="[0-9]+([.][0-9]+)?" min="0" step="any" required>
                     </div>
 
 

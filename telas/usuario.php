@@ -43,7 +43,7 @@
                 <div class="form-row">
                     <div class="col-sm-6 my-1">
                         <label>Nome:</label>
-                        <input type="text" id="nome" name="nome" class="form-control">
+                        <input type="text" id="nome" name="nome" class="form-control" required>
                     </div>
 
                     <div class="col-sm-6 my-1">
@@ -71,11 +71,11 @@
                 <div class="form-row">
                     <div class="col-sm-6 my-1">
                         <label>Usuário:</label>
-                        <input type="text" id="usuario" name="usuario" class="form-control">
+                        <input type="text" id="usuario" name="usuario" class="form-control" required>
                     </div>
                     <div class="col-sm-6 my-1">
                         <label>senha:</label>
-                        <input type="password" id="senha" name="senha" class="form-control">
+                        <input type="password" id="senha" name="senha" class="form-control" required>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success btn-lg float-right">Cadastrar</button>

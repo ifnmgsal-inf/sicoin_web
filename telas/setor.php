@@ -43,12 +43,12 @@
                 <div class="form-row">
                     <div class="col-sm-6 my-1">
                         <label>Setor:</label>
-                        <input type="text" id="setor" name="setor" class="form-control">
+                        <input type="text" id="setor" name="setor" class="form-control" required>
                     </div>
 
                     <div class="col-sm-6 my-1">
                         <label>Responsável:</label>
-                        <input type="text" id="responsavel" name="responsavel" class="form-control">
+                        <input type="text" id="responsavel" name="responsavel" class="form-control" required>
                     </div>
 
 
@@ -58,7 +58,7 @@
                         <select name="tipo" id="tipo" class="form-control">
                             <option value="entrada">Entrada</option>
                             <option value="saida">Saída</option>
-                            <option value="saida">Entrada/Saida</option>
+                            <option value="entrada/saida">Entrada/Saída</option>
                         </select>
                     </div>
 
