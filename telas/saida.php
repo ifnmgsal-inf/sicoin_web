@@ -1,5 +1,10 @@
 <?php
+session_start();
+if(!$_SESSION['tipo'] || $_SESSION['tipo'] == 'padrao'){
+    header('location:login.php');
+}else {
     require "option_select.php";
+}  
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +21,7 @@
 </head>
 
 <body>
+    <?php if($_SESSION['tipo'] == 'administrador') {?>
     <nav id="navbar" class="navbar navbar-expand-lg">
         <img src="../imagens/SICOIN.svg" alt="triangle with all three sides equal" height="100%" width="100px" />
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -33,6 +39,26 @@
             </div>
         </div>
     </nav>
+
+    <?php } else {?>
+
+    <nav id="navbar" class="navbar navbar-expand-lg">
+        <img src="../imagens/SICOIN.svg" alt="triangle with all three sides equal" height="100%" width="100px" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="nav navbar-nav ml-auto">
+                <a id="item" class="nav-item nav-link" href="entrada.php">Nota de entrada</a>
+                <a id="item" class="nav-item nav-link" href="saida.php">Nota de saída</a>
+                <a id="item" class="nav-item nav-link" href="relatorio.php">Relatórios</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <?php } ?>
 
     <h1 class="container-fluid interno">Nota de Saída</h1>
 
@@ -55,82 +81,82 @@
                             <option value="doacao">Doação</option>
                             <option value="transferencia">Transferência</option>
                         </select>
-</div>
+                    </div>
 
-                        <div class="col-sm-6 my-1">
-                            <label>Setor de destino</label>
-                            <select name="destino" id="destino" class="form-control">
-                                <?php
+                    <div class="col-sm-6 my-1">
+                        <label>Setor de destino</label>
+                        <select name="destino" id="destino" class="form-control">
+                            <?php
                             while($linhas_saidas = mysqli_fetch_assoc($saidas)){
                         ?>
-                                <option value="<?php echo $linhas_saidas['setor'];?>">
-                                    <?php echo $linhas_saidas['setor'];?>
-                                </option>
-                                <?php }?>
-                            </select>
-                        </div>
-
-                        <div class="col-sm-6 my-1">
-                            <label>CNPJ:</label>
-                            <input type="text" id="cnpj" name="cnpj" class="form-control">
-                        </div>
-
-
-                        <div class="col-sm-6 my-1">
-                            <label>Data de emissão:</label>
-                            <input type="date" id="emissao" name="emissao" class="form-control" required>
-                        </div>
-
+                            <option value="<?php echo $linhas_saidas['setor'];?>">
+                                <?php echo $linhas_saidas['setor'];?>
+                            </option>
+                            <?php }?>
+                        </select>
                     </div>
 
-                    <div class="form-row">
-                        <div class="col-sm-3 my-1">
-                            <label>Produto:</label>
+                    <div class="col-sm-6 my-1">
+                        <label>CNPJ:</label>
+                        <input type="text" id="cnpj" name="cnpj" class="form-control">
+                    </div>
 
-                            <select name="produto" id="produto" class="form-control">
-                                <?php
+
+                    <div class="col-sm-6 my-1">
+                        <label>Data de emissão:</label>
+                        <input type="date" id="emissao" name="emissao" class="form-control" required>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-3 my-1">
+                        <label>Produto:</label>
+
+                        <select name="produto" id="produto" class="form-control">
+                            <?php
                             while($linhas_produtos = mysqli_fetch_assoc($produtos)){
                         ?>
-                                <option value="<?php echo $linhas_produtos['descricao'];?>">
-                                    <?php echo $linhas_produtos['descricao'];?>
+                            <option value="<?php echo $linhas_produtos['descricao'];?>">
+                                <?php echo $linhas_produtos['descricao'];?>
 
-                                </option>
-                                <?php }?>
-                            </select>
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>Quantidade:</label>
-                            <input type="number" id="quantidade" name="quantidade" class="form-control" required>
-                        </div>
+                            </option>
+                            <?php }?>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <label>Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" class="form-control" required>
+                    </div>
 
-                        <div class="col-sm-3 my-1">
-                            <label>Preço unidade:</label>
-                            <input type="number" id="unidade" name="unidade" class="form-control" required>
-                        </div>
-
-
-                        <input type="hidden" id="dados" name="dados" value="">
-
-                        <div class="col-sm-3 my-1">
-                            <a id="adicionar" class="btn btn-sm btn-success" onclick="adicionaLinha('tbl','dados')">
-                                Adicionar</a>
-                        </div>
+                    <div class="col-sm-3 my-1">
+                        <label>Preço unidade:</label>
+                        <input type="number" id="unidade" name="unidade" class="form-control" required>
                     </div>
 
 
-                    <table id="tbl" class="table table-hover" name="tbl">
-                        <tr>
-                            <td>Produto</td>
-                            <td>Quantidade</td>
-                            <td>Valor unidade</td>
-                            <td>Valor Total</td>
-                            <td>Excluir</td>
-                        </tr>
-                    </table>
+                    <input type="hidden" id="dados" name="dados" value="">
 
-                    <button type="submit" class="btn btn-success btn-lg float-right">Cadastrar</button>
+                    <div class="col-sm-3 my-1">
+                        <a id="adicionar" class="btn btn-sm btn-success" onclick="adicionaLinha('tbl','dados')">
+                            Adicionar</a>
+                    </div>
                 </div>
+
+
+                <table id="tbl" class="table table-hover" name="tbl">
+                    <tr>
+                        <td>Produto</td>
+                        <td>Quantidade</td>
+                        <td>Valor unidade</td>
+                        <td>Valor Total</td>
+                        <td>Excluir</td>
+                    </tr>
+                </table>
+
+                <button type="submit" class="btn btn-success btn-lg float-right">Cadastrar</button>
             </div>
+        </div>
     </form>
 
 

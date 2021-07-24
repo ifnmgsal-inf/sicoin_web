@@ -1,5 +1,10 @@
 <?php
+session_start();
+if(!$_SESSION['tipo'] || $_SESSION['tipo'] == 'padrao'){
+    header('location:login.php');
+} else{
     require "setor_select.php";
+} 
 ?>
 
 <!DOCTYPE html>
