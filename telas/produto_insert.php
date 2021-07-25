@@ -6,6 +6,9 @@ $descricao = $_POST['descricao'];
 $estoque = $_POST['estoque'];
 $unidade = $_POST['unidade'];
 
+$estoque = str_replace(',','.',$estoque);
+$unidade = str_replace(',','.',$unidade);
+
 $sql = "INSERT INTO produto (descricao, estoque, unidade)
 VALUES ('$descricao','$estoque','$unidade')";
 

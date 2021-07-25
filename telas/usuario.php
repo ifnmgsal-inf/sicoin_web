@@ -36,6 +36,7 @@ if(!$_SESSION['tipo'] || $_SESSION['tipo'] == 'padrao'){
                     <a id="item" class="nav-item nav-link" href="entrada.php">Nota de entrada</a>
                     <a id="item" class="nav-item nav-link" href="saida.php">Nota de saída</a>
                     <a id="item" class="nav-item nav-link" href="relatorio.php">Relatórios</a>
+                    <a id="item" class="nav-item nav-link" href="sair.php">Sair</a>
             </div>
         </div>
     </nav>

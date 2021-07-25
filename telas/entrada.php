@@ -37,6 +37,7 @@ if(!$_SESSION['tipo']){
                     <a id="item" class="nav-item nav-link" href="entrada.php">Nota de entrada</a>
                     <a id="item" class="nav-item nav-link" href="saida.php">Nota de saída</a>
                     <a id="item" class="nav-item nav-link" href="relatorio.php">Relatórios</a>
+                    <a id="item" class="nav-item nav-link" href="sair.php">Sair</a>
             </div>
         </div>
     </nav>
@@ -54,6 +55,7 @@ if(!$_SESSION['tipo']){
                 <a id="item" class="nav-item nav-link" href="entrada.php">Nota de entrada</a>
                 <a id="item" class="nav-item nav-link" href="saida.php">Nota de saída</a>
                 <a id="item" class="nav-item nav-link" href="relatorio.php">Relatórios</a>
+                <a id="item" class="nav-item nav-link" href="sair.php">Sair</a>
             </div>
         </div>
     </nav>
@@ -183,29 +185,32 @@ if(!$_SESSION['tipo']){
         var quantidade = document.querySelector("input[name='quantidade']").value
         var unidade = document.querySelector("input[name='unidade']").value
 
-        if (quantidade != "" && unidade != "") {
+        if (quantidade < 0 || unidade < 0) {
+            alert('Valor inválido')
+        } else {
+            if (quantidade != "" && unidade != "") {
 
-            var tabela = document.getElementById(idTabela)
-            var numeroLinhas = tabela.rows.length
-            var linha = tabela.insertRow(numeroLinhas)
-            var celula1 = linha.insertCell(0)
-            var celula2 = linha.insertCell(1)
-            var celula3 = linha.insertCell(2)
-            var celula4 = linha.insertCell(3)
-            var celula5 = linha.insertCell(4)
-            celula1.innerHTML = produto
-            celula2.innerHTML = quantidade
-            celula3.innerHTML = unidade
-            celula4.innerHTML = unidade * quantidade
-            celula5.innerHTML =
-                "<button onclick='removeLinha(this)' class='btn btn-sm'><i class='material-icons'>delete</i></button>"
+                var tabela = document.getElementById(idTabela)
+                var numeroLinhas = tabela.rows.length
+                var linha = tabela.insertRow(numeroLinhas)
+                var celula1 = linha.insertCell(0)
+                var celula2 = linha.insertCell(1)
+                var celula3 = linha.insertCell(2)
+                var celula4 = linha.insertCell(3)
+                var celula5 = linha.insertCell(4)
+                celula1.innerHTML = produto
+                celula2.innerHTML = quantidade
+                celula3.innerHTML = unidade
+                celula4.innerHTML = unidade * quantidade
+                celula5.innerHTML =
+                    "<button onclick='removeLinha(this)' class='btn btn-sm'><i class='material-icons'>delete</i></button>"
 
-            var dado = document.getElementById(idTabela, idDados)
-            var tableJson = $('#tbl').tableToJSON()
-            var jsonString = JSON.stringify(tableJson)
-            dados.value = jsonString
+                var dado = document.getElementById(idTabela, idDados)
+                var tableJson = $('#tbl').tableToJSON()
+                var jsonString = JSON.stringify(tableJson)
+                dados.value = jsonString
+            }
         }
-
     }
 
     function removeLinha(linha) {

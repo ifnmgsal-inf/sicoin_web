@@ -29,3 +29,19 @@ body{
     margin-top: 33px;
     color: rgb(255, 255, 255);
 }
+.centro{
+    text-align: center;
+}
+.espaco{
+    margin-top: 200px;
+}
+.posicao{
+    position: center;
+}
+.botao{
+    margin-top: 50px;
+}
+.fundo{
+    background-image: url("../imagens/index.svg");
+    background-size: cover;
+}
