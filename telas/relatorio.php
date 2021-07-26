@@ -64,7 +64,7 @@ if(!$_SESSION['tipo']){
 
     <h1 class="container-fluid interno centro">Relatório</h1>
 
-    <form action="login_select.php" method="post">
+    <form action="gerar_pdf.php" method="post">
         <div class="posicao">
             <div class="container col-md-5">
                 <div class="interno">
@@ -78,13 +78,14 @@ if(!$_SESSION['tipo']){
 
                     <div class="col-md">
                         <label>Código da nota:</label>
-                        <input type="text" id="codigo" name="codigo" class="form-control" required>
+                        <input type="text" id="codigo" name="codigo" class="form-control">
                     </div>
 
                     <div class="col-md">
                         <label>Produto:</label>
 
                         <select name="produto" id="produto" class="form-control">
+                            <option value=""></option>
                             <?php
                             while($linhas_produtos = mysqli_fetch_assoc($produtos)){
                         ?>
@@ -99,6 +100,7 @@ if(!$_SESSION['tipo']){
                     <div class="col-md">
                         <label>Setor</label>
                         <select name="setor" id="setor" class="form-control">
+                            <option value=""></option>
                             <?php
                             while($linhas_saidas = mysqli_fetch_assoc($saidas)){
                         ?>
@@ -111,12 +113,12 @@ if(!$_SESSION['tipo']){
 
                     <div class="col-md">
                         <label>Data de:</label>
-                        <input type="date" id="inicio" name="inicio" class="form-control" required>
+                        <input type="date" id="inicio" name="inicio" class="form-control">
                     </div>
 
                     <div class="col-md">
                         <label>Data até:</label>
-                        <input type="date" id="inicio" name="inicio" class="form-control" required>
+                        <input type="date" id="fim" name="fim" class="form-control">
                     </div>
                     <div class="col-md">
                         <button type="submit" class="btn-success btn-lg col-md botao">Gerar Relatório</button>
