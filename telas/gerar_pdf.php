@@ -23,7 +23,7 @@ $inicio_text = $inicio == '' ? "4 = 4" : "emissao >= '$inicio'";
 $fim_text = $fim == '' ? "5 = 5" : "emissao <= '$fim'";
 
 
-$sql = "SELECT * FROM $tipo_text, setor WHERE $cod_text and $prod_text and $setor_text and $inicio_text and $fim_text";
+$sql = "SELECT * FROM $tipo_text, $tipo WHERE $cod_text and $prod_text and $setor_text and $inicio_text and $fim_text";
 
 if($codigo != ''){
   $sql = "SELECT * FROM $tipo, $tipo_text WHERE $tipo.codigo = '$codigo'";
@@ -34,7 +34,7 @@ $total = 0;
 $html = '<html>';
 $html .= '<head>';
 $html .= '<style>';
-$html .= 'table{    --bs-table-bg:transparent;
+$html .= 'table {--bs-table-bg:transparent;
   --bs-table-accent-bg:transparent;
   --bs-table-striped-color:#212529;
   --bs-table-striped-bg:rgba(0, 0, 0, 0.05);
@@ -59,13 +59,18 @@ $html .= 'table{    --bs-table-bg:transparent;
   padding-right:var(--bs-gutter-x,.75rem);
   padding-left:var(--bs-gutter-x,.75rem);
   margin-right:auto;
-  margin-left:auto}';
-$html .= '<\style>';
+  margin-left:auto;
+  color: rgb(57, 33, 89);}
+  h3 {color: rgb(57, 33, 89);
+    float: right;
+    padding: 15px;
+  }';
+$html .= '</style>';
 
 $html .= '</head>';
 $html .= '<body>';
 
-$html .= '<table">';
+$html .= '<table>';
 $html .= '<thead>';
 $html .= '<tr>';
 $html .= '<th>Nota</th>';
