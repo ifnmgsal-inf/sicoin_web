@@ -167,6 +167,22 @@ if(!$_SESSION['tipo']){
         </div>
     </form>
 
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Erro</h4>
+                </div>
+                <div class="modal-body">
+                    Impossível valor negativo.
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-primary" data-dismiss="modal" value="Fechar">
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -175,10 +191,14 @@ if(!$_SESSION['tipo']){
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"
-        integrity="sha256-H8xrCe0tZFi/C2CgxkmiGksqVaxhW0PFcUKZJZo1yNU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"></script>
 
     <script>
+    function openModal() {
+        jQuery.noConflict();
+        $('#myModal').modal('show')
+    }
+
     function adicionaLinha(idTabela, idDados) {
 
         var produto = document.querySelector("select[name='produto']").value
@@ -186,7 +206,7 @@ if(!$_SESSION['tipo']){
         var unidade = document.querySelector("input[name='unidade']").value
 
         if (quantidade < 0 || unidade < 0) {
-            alert('Valor inválido')
+            openModal()
         } else {
             if (quantidade != "" && unidade != "") {
 
