@@ -231,7 +231,8 @@ if(!$_SESSION['tipo']){
                 dados.value = jsonString
             }
         }
-    }
+    } <
+    h1 > Valor < /h1>
 
     function removeLinha(linha) {
         var i = linha.parentNode.parentNode.rowIndex
@@ -242,7 +243,19 @@ if(!$_SESSION['tipo']){
     }
     </script>
 
-
+    <div id="rodape">
+        <footer>
+            <div class="container-fluid interno">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright-box">
+                            <p class="copyright">&copy; Copyright <strong>Rafael Almeida Soares </strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>

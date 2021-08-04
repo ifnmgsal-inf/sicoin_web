@@ -21,7 +21,7 @@ if(!$_SESSION['tipo'] || $_SESSION['tipo'] == 'padrao'){
 </head>
 
 <body>
-        <nav id="navbar" class="navbar navbar-expand-lg">
+    <nav id="navbar" class="navbar navbar-expand-lg">
         <img src="../imagens/SICOIN.svg" alt="triangle with all three sides equal" height="100%" width="100px" />
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@ if(!$_SESSION['tipo'] || $_SESSION['tipo'] == 'padrao'){
             </div>
         </div>
     </nav>
-    
+
     <h1 class="container-fluid interno">Produto</h1>
 
     <form action="produto_insert.php" method="post">
@@ -124,7 +124,19 @@ if(!$_SESSION['tipo'] || $_SESSION['tipo'] == 'padrao'){
 
 
 
-
+    <div>
+        <footer id="rodape">
+            <div class="container-fluid interno">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright-box">
+                            <p class="copyright">&copy; Copyright <strong>Rafael Almeida Soares </strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
 
 

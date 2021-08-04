@@ -127,6 +127,20 @@ if(!$_SESSION['tipo']){
             </div>
         </div>
     </form>
+
+    <div id="rodape">
+        <footer>
+            <div class="container-fluid interno centro">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright-box">
+                            <p class="copyright">&copy; Copyright <strong>Rafael Almeida Soares </strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>

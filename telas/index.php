@@ -64,6 +64,7 @@ if(!$_SESSION['tipo']){
 
     </div>
 
+    
 </body>
 
 </html>

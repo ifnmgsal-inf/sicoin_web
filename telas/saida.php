@@ -177,6 +177,19 @@ if(!$_SESSION['tipo']){
         </div>
     </div>
 
+    <div id="rodape">
+        <footer>
+            <div class="container-fluid interno">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright-box">
+                            <p class="copyright">&copy; Copyright <strong>Rafael Almeida Soares </strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

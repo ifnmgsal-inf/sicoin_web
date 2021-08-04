@@ -7,6 +7,17 @@ body{
     height: 80px;
     font-size: large;
 }
+@media (min-width: 434px) {
+    .navbar-collapse{
+    background-color: rgb(57, 33, 89);
+    }  
+}
+  @media (min-width: 768px) {
+    .navbar-collapse{
+    background-color: unset;
+    }  
+}
+
 #item{
     color: #fafafa;
 }
@@ -43,5 +54,14 @@ body{
 }
 .fundo{
     background-image: url("../imagens/index.svg");
-    background-size: cover;
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
+}
+
+#rodape{
+    margin-top: 5%;
 }
