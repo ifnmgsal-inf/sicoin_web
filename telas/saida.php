@@ -161,6 +161,8 @@ if(!$_SESSION['tipo']){
         </div>
     </form>
 
+    <h1 class="container-fluid interno">Total: <span id="total">0</span></h1>
+
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -212,6 +214,7 @@ if(!$_SESSION['tipo']){
         var produto = document.querySelector("select[name='produto']").value
         var quantidade = document.querySelector("input[name='quantidade']").value
         var unidade = document.querySelector("input[name='unidade']").value
+        var total = document.getElementById("total").innerHTML
 
         if (quantidade < 0 || unidade < 0) {
             openModal()
@@ -237,6 +240,9 @@ if(!$_SESSION['tipo']){
                 var tableJson = $('#tbl').tableToJSON()
                 var jsonString = JSON.stringify(tableJson)
                 dados.value = jsonString
+                total = parseFloat(total) + (quantidade * unidade)
+                document.getElementById("total").innerHTML = total
+
             }
         }
 
@@ -244,6 +250,13 @@ if(!$_SESSION['tipo']){
 
     function removeLinha(linha) {
         var i = linha.parentNode.parentNode.rowIndex
+        var total = document.getElementById("total").innerHTML
+        var mytable  =  document.getElementById('tbl')
+        var objCells = mytable.rows.item(i).cells
+        var valor = objCells.item(3).innerHTML
+        total = parseFloat(total) - parseFloat(valor)
+        document.getElementById("total").innerHTML = total
+            
         document.getElementById('tbl').deleteRow(i)
         var tableJson = $('#tbl').tableToJSON()
         var jsonString = JSON.stringify(tableJson)

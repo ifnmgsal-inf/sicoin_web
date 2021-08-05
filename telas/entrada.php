@@ -167,6 +167,8 @@ if(!$_SESSION['tipo']){
         </div>
     </form>
 
+    <h1 class="container-fluid interno">Total: <span id="total">0</span></h1>
+
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -183,6 +185,19 @@ if(!$_SESSION['tipo']){
         </div>
     </div>
 
+    <div id="rodape">
+        <footer>
+            <div class="container-fluid interno">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="copyright-box">
+                            <p class="copyright">&copy; Copyright <strong>Rafael Almeida Soares </strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -191,7 +206,8 @@ if(!$_SESSION['tipo']){
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"
+        integrity="sha256-H8xrCe0tZFi/C2CgxkmiGksqVaxhW0PFcUKZJZo1yNU=" crossorigin="anonymous"></script>
 
     <script>
     function openModal() {
@@ -204,6 +220,7 @@ if(!$_SESSION['tipo']){
         var produto = document.querySelector("select[name='produto']").value
         var quantidade = document.querySelector("input[name='quantidade']").value
         var unidade = document.querySelector("input[name='unidade']").value
+        var total = document.getElementById("total").innerHTML
 
         if (quantidade < 0 || unidade < 0) {
             openModal()
@@ -229,13 +246,22 @@ if(!$_SESSION['tipo']){
                 var tableJson = $('#tbl').tableToJSON()
                 var jsonString = JSON.stringify(tableJson)
                 dados.value = jsonString
+                total = parseFloat(total) + (quantidade * unidade)
+                document.getElementById("total").innerHTML = total
+
             }
         }
-    } <
-    h1 > Valor < /h1>
+    }
 
     function removeLinha(linha) {
         var i = linha.parentNode.parentNode.rowIndex
+        var total = document.getElementById("total").innerHTML
+        var mytable  =  document.getElementById('tbl')
+        var objCells = mytable.rows.item(i).cells
+        var valor = objCells.item(3).innerHTML
+        total = parseFloat(total) - parseFloat(valor)
+        document.getElementById("total").innerHTML = total
+        
         document.getElementById('tbl').deleteRow(i)
         var tableJson = $('#tbl').tableToJSON()
         var jsonString = JSON.stringify(tableJson)
@@ -243,19 +269,6 @@ if(!$_SESSION['tipo']){
     }
     </script>
 
-    <div id="rodape">
-        <footer>
-            <div class="container-fluid interno">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="copyright-box">
-                            <p class="copyright">&copy; Copyright <strong>Rafael Almeida Soares </strong></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
 </body>
 
 </html>
