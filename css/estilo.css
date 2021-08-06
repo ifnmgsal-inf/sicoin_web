@@ -4,11 +4,12 @@ body{
 
 #navbar{
     background-color: rgb(57, 33, 89);
-    height: 80px;
     font-size: large;
 }
 @media (min-width: 434px) {
     .navbar-collapse{
+        height: auto;
+        color: rgb(255, 255, 255);
     background-color: rgb(57, 33, 89);
     }  
 }

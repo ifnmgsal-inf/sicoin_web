@@ -10,7 +10,7 @@ if(!$_SESSION['tipo']){
 
 <head>
     <meta charset="UTF-8" />
-    <title>Princiapl</title>
+    <title>Principal</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -57,14 +57,9 @@ if(!$_SESSION['tipo']){
         </div>
     </nav>
 
+
     <?php } ?>
 
-    <div class="fundo">
-
-
-    </div>
-
-    
 </body>
 
 </html>
