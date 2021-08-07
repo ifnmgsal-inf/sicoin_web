@@ -19,6 +19,16 @@ body{
     }  
 }
 
+.navbar-toggler {
+    background: white;
+}
+
+.navbar-toggler:focus, .navbar-toggler:hover {
+    text-decoration: none;
+    background: white;
+}
+
+
 #item{
     color: #fafafa;
 }
