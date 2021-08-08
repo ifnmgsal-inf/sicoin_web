@@ -22,6 +22,14 @@ foreach($dados_array as $valor){
   $sql = "INSERT INTO entrada_produto (codigo, produto, quantidade, valor)
   VALUES ('$codigo','$produto','$quantidade','$valor')";
   mysqli_query($conn, $sql);
+
+  $sql = "SELECT * FROM produto WHERE descricao = '$produto'";
+  $resultado = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_assoc($resultado)){
+    $novoValor = $row['estoque'] + $quantidade;
+    $sql = "UPDATE produto SET estoque = $novoValor WHERE descricao = '$produto'";
+    $resultado = mysqli_query($conn, $sql);
+  }
 }
 
 $sql = "INSERT INTO entrada (codigo, origem, destino, emissao, recebimento)

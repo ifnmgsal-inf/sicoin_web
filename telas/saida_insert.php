@@ -27,23 +27,29 @@ foreach($dados_array as $valor){
   while($row = mysqli_fetch_assoc($resultado)){
     if(($row['estoque'] - $quantidade) < 0){
       $valida = false;
-    }
+    }else{
+      $novoValor = $row['estoque'] - $quantidade;
+      $sql = "UPDATE produto SET estoque = $novoValor WHERE descricao = '$produto'";
+      $resultado = mysqli_query($conn, $sql);
+    } 
   }
-
-  $sql = "INSERT INTO saida_produto (codigo, produto, quantidade, valor)
-  VALUES ('$codigo','$produto','$quantidade','$valor')";
-  mysqli_query($conn, $sql);
+  if($valida){
+    $sql = "INSERT INTO saida_produto (codigo, produto, quantidade, valor)
+    VALUES ('$codigo','$produto','$quantidade','$valor')";
+    mysqli_query($conn, $sql);
+  } 
 }
 
-$sql = "INSERT INTO saida (codigo, natureza, destino, cnpj, emissao)
-VALUES ('$codigo','$natureza','$destino','$cnpj', '$emissao')";
 if($valida){
-  mysqli_autocommit($conn, true);
+  $sql = "INSERT INTO saida (codigo, natureza, destino, cnpj, emissao)
+  VALUES ('$codigo','$natureza','$destino','$cnpj', '$emissao')";
+  mysqli_autocommit($conn,true);
 } else{
   mysqli_rollback($conn);
+  $valida = false;
 }
 
-if (mysqli_query($conn, $sql)) {
+if ($valida) {
   ?>
   <!DOCTYPE html>
 <html>
@@ -87,7 +93,48 @@ if (mysqli_query($conn, $sql)) {
 </body>
   <?php
 } else {
-  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  ?>
+  <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">ERRO</h4>
+                </div>
+                <div class="modal-body">
+                    Falha ao cadastrar, estoque insuficiente!
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-primary" data-dismiss="modal" value="Fechar" id="modal" onclick='confirmar()'>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#myModal').modal('show')
+    })
+
+    function confirmar() {
+        window.location.replace("saida.php")
+    }
+    </script>
+</body>
+  <?php
 }
 
 ?>

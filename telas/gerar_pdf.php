@@ -93,6 +93,7 @@ while($row = mysqli_fetch_assoc($resultado)){
     $html .= '<td>'.$row['quantidade'].'</td>';
     $html .= '<td>'.($row['valor']*$row['quantidade']).'</td>';
     $html .= '</tr>';
+    $total += ($row['valor']*$row['quantidade']);
 }
 $html .='</tbody>';
 $html .='</table>';
