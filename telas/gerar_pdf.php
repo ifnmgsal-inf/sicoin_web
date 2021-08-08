@@ -23,7 +23,7 @@ $inicio_text = $inicio == '' ? "4 = 4" : "emissao >= '$inicio'";
 $fim_text = $fim == '' ? "5 = 5" : "emissao <= '$fim'";
 
 
-$sql = "SELECT * FROM $tipo_text, $tipo WHERE $cod_text and $prod_text and $setor_text and $inicio_text and $fim_text";
+$sql = "SELECT * FROM $tipo_text, $tipo WHERE $cod_text and $prod_text and $setor_text and $inicio_text and $fim_text and $tipo.codigo = $tipo_text.codigo";
 
 if($codigo != ''){
   $sql = "SELECT * FROM $tipo, $tipo_text WHERE $tipo.codigo = '$codigo'";
