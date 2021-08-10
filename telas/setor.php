@@ -192,7 +192,7 @@ if(!$_SESSION['tipo'] || $_SESSION['tipo'] == 'padrao'){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="copyright-box">
-                            <p class="copyright">&copy; Copyright <strong>Rafael Almeida Soares </strong></p>
+                        <p class="copyright">&copy; Desenvolvido por <strong>Rafael Almeida Soares </strong> para o IFNMG</p>
                         </div>
                     </div>
                 </div>
